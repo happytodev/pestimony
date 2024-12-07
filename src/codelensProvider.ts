@@ -1,10 +1,21 @@
 import * as vscode from 'vscode';
 
-// Storage of test results
+// Store test results
 const testResults = new Map<string, boolean>();
 
 export function updateTestResult(filePath: string, testName: string, success: boolean) {
   testResults.set(`${filePath}:${testName}`, success);
+}
+
+export function getFailedTests(filePath: string): string[] {
+  const failedTests: string[] = [];
+  testResults.forEach((success, key) => {
+    if (!success && key.startsWith(filePath)) {
+      const testName = key.split(':')[1];
+      failedTests.push(testName);
+    }
+  });
+  return failedTests;
 }
 
 export class TestCodeLensProvider implements vscode.CodeLensProvider {
@@ -38,7 +49,7 @@ export class TestCodeLensProvider implements vscode.CodeLensProvider {
 
         console.log(`Found test: ${testName} at line ${index + 1}`);
 
-        // Add CodeLens for “Run This Test
+        // Add CodeLens for "Run This Test"
         codeLenses.push(
           new vscode.CodeLens(range, {
             title,
@@ -49,7 +60,7 @@ export class TestCodeLensProvider implements vscode.CodeLensProvider {
       }
     });
 
-    // Add a global CodeLens for “Run All Tests”.
+    // Add a global CodeLens for "Run All Tests"
     codeLenses.push(
       new vscode.CodeLens(new vscode.Range(0, 0, 0, 0), {
         title: 'Run All Tests in File',
@@ -57,6 +68,18 @@ export class TestCodeLensProvider implements vscode.CodeLensProvider {
         arguments: [document.uri.fsPath],
       })
     );
+
+    // Add a global CodeLens for "Run Failed Tests" if tests failed
+    const failedTests = getFailedTests(document.uri.fsPath);
+    if (failedTests.length > 0) {
+      codeLenses.push(
+        new vscode.CodeLens(new vscode.Range(0, 0, 1, 0), {
+          title: 'Rerun Failed Tests',
+          command: 'pest.runFailedTests',
+          arguments: [document.uri.fsPath],
+        })
+      );
+    }
 
     console.log(`CodeLens added for document: ${document.fileName}`);
 
