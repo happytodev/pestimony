@@ -1,0 +1,46 @@
+{
+  "name": "pestimony-vscode-plugin",
+  "displayName": "Pestimony PestPHP Plugin",
+  "version": "0.1.0",
+  "description": "VS Code plugin for PestPHP",
+  "publisher": "HappyToDev",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Testing"
+  ],
+  "activationEvents": [
+    "onCommand:pest.runTests",
+    "onCommand:pest.generateFeatureTest",
+    "onCommand:pest.generateUnitTest"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "pest.runTests",
+        "title": "Pestimony: Run Pest Tests"
+      },
+      {
+        "command": "pest.generateFeatureTest",
+        "title": "Pestimony: generate Feature Test Skeleton"
+      },
+      {
+        "command": "pest.generateUnitTest",
+        "title": "Pestimony: generate Unit Test Skeleton"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/vscode": "^1.95.0",
+    "typescript": "^5.7.2"
+  }
+}
