@@ -2,7 +2,7 @@
   "name": "pestimony-vscode-plugin",
   "displayName": "Pestimony PestPHP Plugin",
   "version": "0.1.0",
-  "description": "VS Code plugin for PestPHP",
+  "description": "A PestPHP plugin for Visual Studio Code",
   "publisher": "HappyToDev",
   "engines": {
     "vscode": "^1.75.0"
@@ -10,10 +10,9 @@
   "categories": [
     "Testing"
   ],
+  "icon": "pestimony.png",
   "activationEvents": [
-    "onCommand:pest.runTests",
-    "onCommand:pest.generateFeatureTest",
-    "onCommand:pest.generateUnitTest"
+    "onLanguage:php"
   ],
   "main": "./out/extension.js",
   "contributes": {
