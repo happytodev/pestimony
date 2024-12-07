@@ -8,7 +8,7 @@ function generateFeatureTest() {
     vscode.window.showInputBox({ prompt: 'Enter Feature Test Filename' }).then(fileName => {
         if (!fileName)
             return;
-        // Ajouter "Test" au nom si nécessaire
+        // Add “Test” to the name if necessary
         if (!fileName.endsWith('Test')) {
             fileName += 'Test';
         }
@@ -18,12 +18,12 @@ function generateFeatureTest() {
                 vscode.window.showErrorMessage('No workspace folder is open.');
                 return;
             }
-            // Utiliser le nom du fichier si aucune description n'est fournie
+            // Use file name if no description is provided
             const finalTestDescription = (testDescription === null || testDescription === void 0 ? void 0 : testDescription.trim()) || fileName.replace('Test', '');
-            // Construire le chemin du fichier
+            // Build file path
             const workspacePath = workspaceFolders[0].uri.fsPath;
             const testFilePath = path.join(workspacePath, 'tests', 'Feature', `${fileName}.php`);
-            // Contenu du fichier
+            // File contents
             const template = `<?php
 
 use Illuminate\\Foundation\\Testing\\RefreshDatabase;
@@ -40,10 +40,10 @@ it('${finalTestDescription}', function () {
     $response->assertStatus(200);
 });
 `;
-            // Créer le fichier
+            // Create file
             fs.mkdirSync(path.dirname(testFilePath), { recursive: true });
             fs.writeFileSync(testFilePath, template);
-            // Ouvrir le fichier dans l'éditeur
+            // Open file in editor
             vscode.workspace.openTextDocument(testFilePath).then(doc => {
                 vscode.window.showTextDocument(doc);
             });
