@@ -1,7 +1,7 @@
 {
   "name": "pestimony-vscode-plugin",
   "displayName": "Pestimony PestPHP Plugin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A PestPHP plugin for Visual Studio Code",
   "publisher": "HappyToDev",
   "engines": {
