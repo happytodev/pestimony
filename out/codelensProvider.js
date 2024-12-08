@@ -8,9 +8,6 @@ const vscode = require("vscode");
 const testResults = new Map();
 function updateTestResult(filePath, testName, success) {
     testResults.set(`${filePath}:${testName}`, success);
-    console.log('testResults >>>');
-    console.log(testResults);
-    console.log('<<< End testResults');
 }
 function getFailedTests(filePath) {
     const failedTests = [];
