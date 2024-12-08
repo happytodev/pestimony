@@ -47,7 +47,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^22.10.1",
-    "@types/vscode": "^1.95.0",
+    "@types/vscode": "^1.75.0",
     "typescript": "^5.7.2"
   }
 }
