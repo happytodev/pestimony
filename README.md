@@ -56,7 +56,7 @@ If a test passed, it will be marked with ✅, if not it will be marked with ❌.
 
 **Rerun only failed tests**
 
-When one or more tests failed, you can rerun only failed tests : 
+When one or more tests failed, you can rerun only failed tests: 
 
 ![](pestimony-rerun-failed-test-30fps.gif)
 
