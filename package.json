@@ -1,7 +1,7 @@
 {
   "name": "pestimony-vscode-plugin",
   "displayName": "Pestimony PestPHP Plugin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A PestPHP plugin for Visual Studio Code",
   "publisher": "HappyToDev",
   "engines": {
@@ -36,6 +36,24 @@
       {
         "command": "pest.generateUnitTest",
         "title": "Pestimony: generate Unit Test Skeleton"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "pest.runTests",
+        "key": "ctrl+k alt+a",
+        "mac": "cmd+k alt+a",
+        "when": "editorLangId == php && resourceFilename =~ /Test\\.php$/"
+      },
+      {
+        "command": "pest.generateUnitTest",
+        "key": "ctrl+k alt+u",
+        "mac": "cmd+k alt+u"
+      },
+      {
+        "command": "pest.generateFeatureTest",
+        "key": "ctrl+k alt+f",
+        "mac": "cmd+k alt+f"
       }
     ]
   },

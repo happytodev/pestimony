@@ -79,9 +79,18 @@ This command will generate for you a new test under the unit folder test.
 
 If folder does't exists, it will created for you.
 
+## Keyboard Shortcuts
+
+| Command                | Shortcut (Windows/Linux) | Shortcut (macOS)      |
+|------------------------|--------------------------|-----------------------|
+| Run Tests              | Ctrl+K Alt+A             | Cmd+K Alt+A           | 
+| Generate Feature Test  | Ctrl+K Alt+F             | Cmd+K Alt+F           | 
+| Generate Unit Test     | Ctrl+K Alt+U             | Cmd+K Alt+U           | 
+
+
 
 ## TODO
 
-- [ ] FEATURE - Add a keyboard shortcut to launch Pestimony commands more easily
+- [X] FEATURE - Add a keyboard shortcut to launch Pestimony commands more easily
 - [ ] BUG - Fix the bug with tests whose status is not updated in source files when the test is launched from the VSCode Palette
 
